@@ -1,0 +1,26 @@
+hdf upgarde setps:
+
+Backup of ambari db and files:
+ pg_dump -U ambari  ambari > /home/SWAMYS/hdfupgardebackup/ambari.sql
+ mysqldump -u rangerdba -p ranger  > /home/SWAMYS/hdfupgardebackup/ranger_metastore_DB.sql
+ mysqldump -u rangerlogger -p ranger_audit  > /home/SWAMYS/hdfupgardebackup/rangeraudit_metastore_DB.sql
+ cp /etc/ambari-server/conf/ambari.properties /home/SWAMYS/hdfupgardebackup/
+ cp /var/lib/ambari-server/ambari-env.sh /home/SWAMYS/hdfupgardebackup/
+ cp ambari.repo /home/SWAMYS/hdfupgardebackup/
+ cp ambari-hdf-51.repo /home/SWAMYS/hdfupgardebackup/
+ ambari-server stop
+ ambari-agent stop
+
+wget -nv http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.0.0/ambari.repo -O /etc/yum.repos.d/ambari.repo
+yum clean all
+yum info ambari-server
+opened  vi /etc/yum.repos.d/ambari.repo and removed
+#json.url = http://public-repo-1.hortonworks.com/HDP/hdp_urlinfo.json
+yum upgrade ambari-server
+yum upgrade ambari-agent
+rpm -qa | grep ambari-agent
+ambari-server upgrade
+wget 
+ambari-server upgrade-mpack --mpack=http://public-repo-1.hortonworks.com/HDF/centos7/3.x/updates/3.2.0.0/tars/hdf_ambari_mp/hdf-ambari-mpack-3.2.0.0-520.tar.gz --purge --verbose --force
+ambari-server upgrade-mpack --mpack=/tmp/hdf-ambari-mpack-3.2.0.0-520.tar.gz
+ambari-server install-mpack --mpack=/tmp/hdf-ambari-mpack-3.2.0.0-520.tar.gz

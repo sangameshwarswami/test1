@@ -1,0 +1,74 @@
+hana_controller.log
+[root@awsnlhdp001 hanaes]# cat hana_controller.log
+19/03/20 07:55:11 INFO Server: Preparing to start SAP HANA Spark Controller ...
+19/03/20 07:55:11 INFO Server: Validating hanaes property configuration...
+19/03/20 07:55:11 INFO ClusterUtils: Using old persistence (classic store), cluster mode is not supported ...
+19/03/20 07:55:11 INFO ClusterUtils: Running in standalone mode.
+19/03/20 07:55:11 INFO HanaSparkFacade: Spark Assembly: /usr/hdp/2.6.4.0-91/spark2/jars/*
+19/03/20 07:55:11 INFO HanaSparkFacade: Running Spark version 2
+
+Exception: java.security.PrivilegedActionException thrown from the UncaughtExceptionHandler in thread "main"
+19/03/20 07:58:29 INFO Server: Preparing to start SAP HANA Spark Controller ...
+19/03/20 07:58:29 INFO Server: Validating hanaes property configuration...
+19/03/20 07:58:29 INFO ClusterUtils: Using old persistence (classic store), cluster mode is not supported ...
+19/03/20 07:58:29 INFO ClusterUtils: Running in standalone mode.
+19/03/20 07:58:30 INFO HanaSparkFacade: Spark Assembly: /usr/hdp/2.6.4.0-91/spark2/jars/*
+19/03/20 07:58:30 INFO HanaSparkFacade: Running Spark version 2
+
+Exception: java.security.PrivilegedActionException thrown from the UncaughtExceptionHandler in thread "main"
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/usr/hdp/2.6.4.0-91/spark2/jars/slf4j-log4j12-1.7.16.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/usr/hdp/2.6.4.0-91/spark2/jars/spark-assembly-1.6.3.2.6.4.0-91-hadoop2.7.3.2.6.4.0-91.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Log4jLoggerFactory]
+Exception in thread "main" java.security.PrivilegedActionException: java.lang.reflect.InvocationTargetException
+        at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:360)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1849)
+        at com.sap.hana.network.Launcher$.delayedEndpoint$com$sap$hana$network$Launcher$1(Launcher.scala:50)
+        at com.sap.hana.network.Launcher$delayedInit$body.apply(Launcher.scala:21)
+        at scala.Function0$class.apply$mcV$sp(Function0.scala:34)
+        at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:12)
+        at scala.App$$anonfun$main$1.apply(App.scala:76)
+        at scala.App$$anonfun$main$1.apply(App.scala:76)
+        at scala.collection.immutable.List.foreach(List.scala:381)
+        at scala.collection.generic.TraversableForwarder$class.foreach(TraversableForwarder.scala:35)
+        at scala.App$class.main(App.scala:76)
+        at com.sap.hana.network.Launcher$.main(Launcher.scala:21)
+        at com.sap.hana.network.Launcher.main(Launcher.scala)
+Caused by: java.lang.reflect.InvocationTargetException
+        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at com.sap.hana.network.Launcher$$anon$1.run(Launcher.scala:71)
+        at com.sap.hana.network.Launcher$$anon$1.run(Launcher.scala:50)
+        ... 14 more
+Caused by: java.lang.NoSuchMethodError: scala.collection.immutable.HashSet$.empty()Lscala/collection/immutable/HashSet;
+        at akka.actor.ActorCell$.<init>(ActorCell.scala:336)
+        at akka.actor.ActorCell$.<clinit>(ActorCell.scala)
+        at akka.actor.RootActorPath.$div(ActorPath.scala:185)
+        at akka.actor.LocalActorRefProvider.<init>(ActorRefProvider.scala:465)
+        at akka.actor.LocalActorRefProvider.<init>(ActorRefProvider.scala:453)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+        at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+        at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+        at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+        at akka.actor.ReflectiveDynamicAccess$$anonfun$createInstanceFor$2.apply(DynamicAccess.scala:78)
+        at scala.util.Try$.apply(Try.scala:192)
+        at akka.actor.ReflectiveDynamicAccess.createInstanceFor(DynamicAccess.scala:73)
+        at akka.actor.ReflectiveDynamicAccess$$anonfun$createInstanceFor$3.apply(DynamicAccess.scala:84)
+        at akka.actor.ReflectiveDynamicAccess$$anonfun$createInstanceFor$3.apply(DynamicAccess.scala:84)
+        at scala.util.Success.flatMap(Try.scala:231)
+        at akka.actor.ReflectiveDynamicAccess.createInstanceFor(DynamicAccess.scala:84)
+        at akka.actor.ActorSystemImpl.liftedTree1$1(ActorSystem.scala:585)
+        at akka.actor.ActorSystemImpl.<init>(ActorSystem.scala:578)
+        at akka.actor.ActorSystem$.apply(ActorSystem.scala:142)
+        at akka.actor.ActorSystem$.apply(ActorSystem.scala:119)
+        at com.sap.hana.network.Server$.actorSystem$lzycompute(Server.scala:113)
+        at com.sap.hana.network.Server$.actorSystem(Server.scala:113)
+        at com.sap.hana.network.HanaMessageHandler.<init>(HanaMessageHandler.scala:28)
+        at com.sap.hana.network.Server$.<init>(Server.scala:117)
+        at com.sap.hana.network.Server$.<clinit>(Server.scala)
+        at com.sap.hana.network.Server.start(Server.scala)
+        ... 20 more
